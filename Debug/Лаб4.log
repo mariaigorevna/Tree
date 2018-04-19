@@ -1,0 +1,5 @@
+﻿  Tree.cpp
+c:\users\работа\documents\visual studio 2015\projects\лаб4\лаб4\tree.cpp(8): error C2065: MultiNode: необъявленный идентификатор
+c:\users\работа\documents\visual studio 2015\projects\лаб4\лаб4\tree.cpp(8): error C2059: синтаксическая ошибка: >
+c:\users\работа\documents\visual studio 2015\projects\лаб4\лаб4\tree.cpp(8): error C2976: std::vector: слишком мало аргументов шаблон
+  d:\microsoft visual studio\vc\include\vector(679): note:  см. объявление "std::vector"
