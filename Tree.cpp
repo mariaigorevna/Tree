@@ -1,5 +1,4 @@
 #include <iostream>
-
 #include <vector>
 
 using namespace std;
@@ -8,15 +7,37 @@ class Tree
 {
 	struct MultiNode
 	{
-
 		double data; //тип элементов дерева
 		int key; //идентификатор
 		MultiNode * parent; //указатель на родительскую структуру
 		vector <MultiNode *> *children; //контейнер ссылок на потомков
 	};
+public:
 	int sum;
 	int curr;
-	MultiNode * find(int key1, MultiNode * ptr)
+	Tree(int x);
+	~Tree();
+	void addNode(int x, int key);
+	void del();
+	void summ(MultiNode * ptr)
+	MultiNode Tree::find(int key1, MultiNode * ptr);
+};
+
+	Tree(int x)
+{
+	root = new MultiNode;
+	root->data = x;
+	curr = 0;
+	root->key = 0;
+	root->parent = NULL;
+	root->children = NULL;
+	//cout << "Идентификатор корня = 0" << endl;
+}
+	~Tree()
+{
+	del();
+}
+	MultiNode Tree::find(int key1, MultiNode * ptr)
 	{
 		MultiNode * temp = NULL;
 		if ((ptr->key) == key1)
@@ -33,9 +54,7 @@ class Tree
 			}
 		}
 	}
-public:
-	MultiNode * root;
-	void addNode(int x, int key)
+	void Tree::addNode(int x, int key)
 	{
 		
 		MultiNode * newNode = new MultiNode;
@@ -46,12 +65,11 @@ public:
 		newNode->parent = p;
 		newNode->key = ++curr;
 		newNode->data = x;
-		//cout << "Идентификатор этого элемента = " << curr << endl;
 		newNode->children = NULL;
-		//return curr;
+	
 		
 	}
-	void del()
+	void Tree::del()
 	{
 		for (int i = curr; i >= 0; i--)
 		{
@@ -66,8 +84,7 @@ public:
 		}
 		curr = -1;
 	}
-
-	void summ(MultiNode * ptr)
+	void Tree::summ(MultiNode * ptr)
 	{
 		int i;
 		if (ptr == NULL)
@@ -95,60 +112,29 @@ public:
 		}
 	}
 
-			
-		
-	
-	
-
-
-	Tree(int x)
-	{
-		root = new MultiNode;
-		root->data = x;
-		curr = 0;
-		root->key = 0;
-		root->parent = NULL;
-		root->children = NULL;
-		//cout << "Идентификатор корня = 0" << endl;
-	}
-	~Tree()
-	{
-		del();
-	}
-};
-
 int main()
 {
-
 	setlocale(0, "");
-	
-		int x;
-		
-			cout << "Введите корень дерева:" << endl;
-			cin >> x;
-			Tree tree(x);
-			cout << "Введите наследника дерева:" << endl;
-			cin >> x;
-			tree.addNode(x, 0);
-			cout << "Введите наследника дерева:" << endl;
-			cin >> x;
-			tree.addNode(x, 0);
-			cout << "Введите наследника дерева:" << endl;
-			cin >> x;
-			tree.addNode(x, 0);
-			cout << "Введите наследника для элемента 1:" << endl;
-			cin >> x;
-			tree.addNode(x, 1);
-			cout << "Введите наследника для элемента 2:" << endl;
-			cin >> x;
-			tree.addNode(x, 2);
-			cout << "Введите наследника для элемента 3:" << endl;
-			cin >> x;
-			tree.addNode(x, 3);
-			cout << "Сумма элементов листьев равна = ";
-			tree.summ(tree.root);
-			cout << endl;
-			system("pause");
+	int x;
+	cout << "Enter root:" << endl;
+	cin >> x;
+	Tree tree(x);
+	cout << "Enter node root:" << endl;
+	cin >> x;
+	tree.addNode(x, 0);
+	cout << "Enter node root:" << endl;
+	cin >> x;
+	tree.addNode(x, 0);
+	cout << "Enter leaf for element 1:" << endl;
+	cin >> x;
+	tree.addNode(x, 1);
+	cout << "Enter leaf for element 1 2:" << endl;
+	cin >> x;
+	tree.addNode(x, 2);
+	cout << "Sum of leaf elements = ";
+	tree.summ(tree.root);
+	cout << endl;
+	system("pause");
 	
 	return 0;
 	system("pause");
